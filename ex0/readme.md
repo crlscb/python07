@@ -6,10 +6,11 @@ config:
   layout: elk
 ---
 classDiagram
+
     class Creature {
         <<abstract>>
-        #name: str
-        #type_creature: str
+        #_name: str
+        #_type_creature: str
         +__init__(name, type_creature)
         +attack()* str
         +describe() str
