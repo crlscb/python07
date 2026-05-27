@@ -1,43 +1,47 @@
 from abc import ABC, abstractmethod
 
+
 class Creature(ABC):
     def __init__(self, name: str, type_creature: str) -> None:
         self._name = name
         self._type_creature = type_creature
-    
+
     @abstractmethod
     def attack(self) -> str:
         pass
-    
+
     def describe(self) -> str:
         return f"{self._name} is a {self._type_creature} type Creature"
 
+
 class Flameling(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("Flameling", "Fire")
-    
+
     def attack(self) -> str:
         return f"{self._name} uses Ember!"
 
+
 class Pyrodon(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("Pyrodon", "Fire/Flying")
-    
+
     def attack(self) -> str:
         return f"{self._name} uses Flamethrower!"
 
 
 class Aquabub(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("Aquabub", "Water")
-    
+
     def attack(self) -> str:
         return f"{self._name} uses Water Gun!"
 
+
 class Torragon(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("Torragon", "Water")
-    
+
     def attack(self) -> str:
         return f"{self._name} uses Hydro Pump!"
 
@@ -52,21 +56,24 @@ class CreatureFactory(ABC):
     def create_evolved(self) -> Creature:
         pass
 
+
 class FlameFactory(CreatureFactory):
-    
+
     def create_base(self) -> Creature:
         return Flameling()
-    
+
     def create_evolved(self) -> Creature:
         return Pyrodon()
 
+
 class AquaFactory(CreatureFactory):
-    
+
     def create_base(self) -> Creature:
         return Aquabub()
-    
+
     def create_evolved(self) -> Creature:
         return Torragon()
+
 
 def test_factory(factory: CreatureFactory) -> None:
     base = factory.create_base()
@@ -76,6 +83,7 @@ def test_factory(factory: CreatureFactory) -> None:
     print(base.attack())
     print(evolved.describe())
     print(evolved.attack())
+
 
 def battle(factory1: CreatureFactory, factory2: CreatureFactory) -> None:
     creature1 = factory1.create_base()
@@ -94,7 +102,6 @@ def battle(factory1: CreatureFactory, factory2: CreatureFactory) -> None:
 
 if __name__ == "__main__":
 
-    
     flame_factory = FlameFactory()
     aqua_factory = AquaFactory()
 
@@ -108,4 +115,3 @@ if __name__ == "__main__":
 
     print("Testing battle")
     battle(flame_factory, aqua_factory)
-
