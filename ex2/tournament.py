@@ -1,12 +1,27 @@
-from ex1.factories import HealingCreatureFactory, TransformCreatureFactory
-from .strategies import NormalStrategy, AggressiveStrategy, DefensiveStrategy
-from ex0.battle import FlameFactory, AquaFactory
+from ex1.factories import (
+    HealingCreatureFactory,
+    TransformCreatureFactory
+)
 
-def battle(opponents):
+from .strategies import (
+    NormalStrategy,
+    AggressiveStrategy,
+    DefensiveStrategy,
+    ABattleStrategy
+)
+
+from ex0.battle import (
+    FlameFactory,
+    AquaFactory,
+    CreatureFactory
+)
+
+
+def battle(opponents: list[tuple[CreatureFactory, ABattleStrategy]]) -> None:
     print("*** Tournament ***")
     print(f"{len(opponents)} opponents involved\n")
 
-    #selecciono dos oponentes de mi lista
+    # selecciono dos oponentes de mi lista
     for i in range(len(opponents)):
         for j in range(i + 1, len(opponents)):
             factory1, strategy1 = opponents[i]
@@ -16,7 +31,6 @@ def battle(opponents):
             creature2 = factory2.create_base()
 
             print("* Battle *")
-
             print(
                 f"{creature1.describe()} \n"
                 f" vs. \n"
@@ -27,7 +41,7 @@ def battle(opponents):
             try:
                 strategy1.act(creature1)
                 strategy2.act(creature2)
-            
+
             except Exception as error:
                 print(
                     f"Battle error, aborting tournament: {error}"
