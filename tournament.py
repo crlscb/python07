@@ -3,14 +3,14 @@ from ex1.factories import (
     TransformCreatureFactory
 )
 
-from .strategies import (
+from ex2.strategies import (
     NormalStrategy,
     AggressiveStrategy,
     DefensiveStrategy,
     ABattleStrategy
 )
 
-from ex0.battle import (
+from ex0.factories import (
     FlameFactory,
     AquaFactory,
     CreatureFactory

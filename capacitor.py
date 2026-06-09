@@ -1,5 +1,13 @@
-from .factories import HealingCreatureFactory, TransformCreatureFactory
-from .capabilities import HealCapability, TransformCapability
+from ex1.factories import (
+    HealingCreatureFactory,
+    TransformCreatureFactory
+)
+
+from ex1.capabilities import (
+    HealCapability,
+    TransformCapability
+)
+
 
 if __name__ == "__main__":
     print("Testing Creature with healing capability")

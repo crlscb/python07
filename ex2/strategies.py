@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
-from ex0.battle import Creature
-from ex1.capabilities import HealCapability, TransformCapability
+from ex0.creatures import Creature
+
+from ex1.capabilities import (
+    HealCapability,
+    TransformCapability
+)
 
 
 class ABattleStrategy(ABC):
