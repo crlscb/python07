@@ -19,7 +19,7 @@ from ex0.factories import (
 
 def battle(opponents: list[tuple[CreatureFactory, ABattleStrategy]]) -> None:
     print("*** Tournament ***")
-    print(f"{len(opponents)} opponents involved\n")
+    print(f"{len(opponents)} opponents involved")
 
     # selecciono dos oponentes de mi lista
     for i in range(len(opponents)):
@@ -30,7 +30,7 @@ def battle(opponents: list[tuple[CreatureFactory, ABattleStrategy]]) -> None:
             creature1 = factory1.create_base()
             creature2 = factory2.create_base()
 
-            print("* Battle *")
+            print("\n* Battle *")
             print(
                 f"{creature1.describe()} \n"
                 f" vs. \n"
@@ -58,9 +58,8 @@ if __name__ == "__main__":
         (HealingCreatureFactory(), DefensiveStrategy())
     ]
     battle(opponents1)
-    print()
 
-    print("Torunament 1 (error)")
+    print("\nTorunament 1 (error)")
     print("[ (Flameling+Aggressive), (Healing+Defensive) ]")
 
     opponents2 = [
@@ -68,9 +67,8 @@ if __name__ == "__main__":
         (HealingCreatureFactory(), DefensiveStrategy())
     ]
     battle(opponents2)
-    print()
 
-    print("Tournament 2 (multiple)")
+    print("\nTournament 2 (multiple)")
     print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
 
     opponents3 = [

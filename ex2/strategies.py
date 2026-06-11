@@ -7,6 +7,10 @@ from ex1.capabilities import (
 )
 
 
+class InvalidStrategyError(Exception):
+    pass
+
+
 class ABattleStrategy(ABC):
 
     @abstractmethod
@@ -32,8 +36,8 @@ class AggressiveStrategy(ABattleStrategy):
 
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise Exception(
-                f"Invalid Creature '{creature._name}' "
+            raise InvalidStrategyError(
+                f"Invalid Creature '{creature.name}' "
                 f"for this aggressive strategy"
             )
 
@@ -50,8 +54,8 @@ class DefensiveStrategy(ABattleStrategy):
 
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise Exception(
-                f"Invalid Creature '{creature._name}' "
+            raise InvalidStrategyError(
+                f"Invalid Creature '{creature.name}' "
                 f"for this defensive strategy"
             )
 
